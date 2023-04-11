@@ -1,11 +1,14 @@
 import pandas as pd
 import numpy as np
-
+from scipy import stats
 
 chat_id = 123456 # Ваш chat ID, не меняйте название переменной
 
 def solution(x: np.array, y: np.array) -> bool:
-    # Измените код этой функции
-    # Это будет вашим решением
-    # Не меняйте название функции и её аргументы
-    return ... # Ваш ответ, True или False
+    test = stats.ks_2samp(x, y)
+    p_value = test[1]
+    if p_value < 0.03:
+        answer = True
+    else:
+        answer = False
+    return answer # Ваш ответ, True или False
